@@ -26,6 +26,7 @@ body {
     grid-template-columns: min-content 1fr;
     margin: 0;
     overflow-x: hidden;
+    z-index: 1;
 }
 
 body > * {
@@ -89,7 +90,39 @@ nav ul li:hover {
 
 /**************************************** SECTION *******************************************/
 section {
-    margin-bottom: 8rem;
+    padding: 2rem 0 8rem;
+    background-color: var(--Foreground-color);
+}
+
+section:first-of-type {
+    background-image: url("../img/apartman.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    z-index: -10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative; /* Needed to control child elements */
+    overflow: hidden; /* Ensure content is clipped to the section's bounds */
+
+    h1 {
+        font-size: 7rem;
+        color: white;
+        position: absolute;
+        text-shadow: 0 0 5px black;
+    }
+}
+
+section:last-of-type > figure {
+    width: 20rem;
+
+    img {
+        height: 50%;
+    }
 }
 
 /**************************************** ELEMENTS *******************************************/
@@ -101,7 +134,16 @@ h2 {
     font-size: 3rem;
 }
 
-hgroup{
+a {
+    color: var(--Green-color);
+    transition: 0.4s ease;
+}
+
+a:hover {
+    color: var(--Cyan-color);
+}
+
+hgroup {
     margin: 1rem 2rem 2rem;
 }
 
@@ -109,10 +151,14 @@ hgroup > p {
     margin-left: 1rem;
 }
 
-iframe{
+iframe {
     width: 100%;
     height: 40rem;
     margin: 1.5rem 0;
+}
+
+address {
+    margin-left: 3rem;
 }
 
 /**************************************** FIGURE *******************************************/
@@ -137,9 +183,10 @@ figure > img:hover {
 
 figcaption {
     font-size: 1rem;
-    border: thin solid black;
     margin-top: 0.5rem;
     padding: 1rem;
+    background-color: var(--Foreground-color);
+    color: black;
 }
 
 #photo_galery > div {
@@ -153,34 +200,23 @@ figcaption {
 footer {
     border-top: thick solid var(--Green-color);
     padding: 3rem 2rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
-footer > ul, footer > dl, footer > section:last-child > ul, footer > section:last-child > dl {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+footer dl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
 
-    div {
-        display: inline-flex;
-        flex-wrap: wrap;
+    div{
+        border: var(--Green-color) solid thin;
+        padding: 1rem;
     }
+}
 
-    dd {
-        margin-left: 0.3rem;
-    }
-
-    dt:after {
-        content: ":";
-    }
-
-    li:not(:last-child)::after, div:not(:last-child)::after {
-        content: " | ";
-        color: var(--Green-color);
-        font-weight: bold;
-        font-size: 1.5rem;
-        padding: 0 0.5rem;
-    }
+footer > dl dt::after {
+    content: ":";
 }
 
 /**************************************** SELECTORS *******************************************/
@@ -189,11 +225,16 @@ footer > ul, footer > dl, footer > section:last-child > ul, footer > section:las
     color: #282a36;
 }
 
+.bg1 {
+    background-color: var(--Current-Line-color);
+    color: var(--Foreground-color);
+}
+
 #contact > dl {
     margin-left: 3rem;
     font-size: 2rem;
 
-    div{
+    div {
         display: flex;
         margin-bottom: 1rem;
     }
@@ -208,24 +249,41 @@ footer > ul, footer > dl, footer > section:last-child > ul, footer > section:las
 
     dt::after {
         content: ":";
-
     }
 }
 
 /**************************************** MEDIA *******************************************/
-@media only screen and (max-width: 55rem) {
-    main {
-        background-color: #8be9fd;
-    }
-}
-
-@media screen and (max-width: 35rem) {
+@media screen and (max-width: 1000px) {
     body {
         grid-template-areas: "header" "main" "footer";
         grid-template-columns: 1fr;
     }
 
-    :root {
-        font-size: 12px;
+    header {
+        width: 100%;
+        padding: 0;
+    }
+
+    #photo_galery > div {
+        flex-direction: column;
+        align-content: center;
+
+        figure {
+            width: 90%;
+
+            figcaption {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    nav {
+        position: relative;
+
+        ul {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
     }
 }
