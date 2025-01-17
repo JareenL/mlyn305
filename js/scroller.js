@@ -15,9 +15,9 @@ function highlightNav() {
 
     // Update active class on navigation links
     navLinks.forEach(link => {
-        link.children[0].classList.remove('active');
+        link.children[0].classList.remove('active-section');
         if (link.getAttribute('href').substring(1) === currentSection) {
-            link.children[0].classList.add('active');
+            link.children[0].classList.add('active-section');
         }
     });
 }
