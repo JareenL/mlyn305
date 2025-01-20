@@ -134,6 +134,10 @@ h2 {
     font-size: 3rem;
 }
 
+h3 {
+    font-size: 2rem;
+}
+
 a {
     color: var(--Green-color);
     transition: 0.4s ease;
@@ -141,6 +145,10 @@ a {
 
 a:hover {
     color: var(--Cyan-color);
+}
+
+p {
+    margin-bottom: 2rem;
 }
 
 hgroup {
@@ -159,6 +167,16 @@ iframe {
 
 address {
     margin-left: 3rem;
+}
+
+table {
+    margin-left: 3rem;
+    border: thin solid var(--Green-color);
+    td, th {
+        border: thin solid var(--Green-color);
+        padding: 0.5rem;
+        margin: 1rem;
+    }
 }
 
 /**************************************** FIGURE *******************************************/
@@ -228,6 +246,13 @@ footer > dl dt::after {
 .bg1 {
     background-color: var(--Current-Line-color);
     color: var(--Foreground-color);
+}
+
+.list {
+    margin-left: 1rem;
+    li {
+        margin-bottom: 1rem;
+    }
 }
 
 #contact > dl {
